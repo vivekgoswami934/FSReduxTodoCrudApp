@@ -4,9 +4,9 @@ import { reducer as AppReducer } from "./AppReducer/reducer";
 import { reducer as AuthReducer } from "./AuthReducer/reducer";
 
 
-const allReducer = combineReducers({AppReducer,AuthReducer}) 
+const rootReducer = combineReducers({AppReducer,AuthReducer}) 
 
 
-const store = legacy_createStore( allReducer , applyMiddleware(thunk));
+const store = legacy_createStore( rootReducer , applyMiddleware(thunk));
 
 export { store };

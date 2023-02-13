@@ -5,19 +5,20 @@ import AllUser from "./AllUser";
 import EditUser from "./EditUser";
 import Login from "./Login";
 import Navbar from "./Navbar";
+import PrivateRoute from "./PrivateRoute";
 
 const AllRoutes = () => {
-  return (
-    <>
-    <Navbar />
-      <Routes>
-        <Route path="/" element={<AllUser />} />
-        <Route path="/add" element={<AddUser />} />
-        <Route path="/edit/:id" element={<EditUser />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </>
-  );
+    return (
+        <>
+           
+            <Routes>
+                <Route path="/" element={<PrivateRoute> <AllUser />  </PrivateRoute>} />
+                <Route path="/add" element={<PrivateRoute> <AddUser /></PrivateRoute>} />
+                <Route path="/edit/:id" element={ <PrivateRoute><EditUser /></PrivateRoute> } />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </>
+    );
 };
 
 export default AllRoutes;
