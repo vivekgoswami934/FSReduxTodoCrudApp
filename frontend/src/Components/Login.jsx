@@ -136,7 +136,7 @@ const Login = ({ setTokenFun }) => {
   width: 400px;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-  /* margin-top: 30px; */
+  margin-top: 40px;
 `;
   const Image = styled("img")({
     width: 100,

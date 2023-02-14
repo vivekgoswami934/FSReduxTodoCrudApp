@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getTodoAPI } from "../Redux/AppReducer/action";
+import { deleteTodoAPI, getTodoAPI } from "../Redux/AppReducer/action";
 import Navbar from "./Navbar";
 
 
@@ -19,9 +19,10 @@ const AllUser = () => {
 
    console.log(isLoading ,isError , todos )
 
-  const deleteUser = async (id) => {
-    // await deleteUserAPI(id);
-    // getData();
+  const deleteUser =  (id) => {
+
+    dispatch(deleteTodoAPI(id)).then(()=> dispatch(getTodoAPI()))
+   
   };
   const onclickthis = () => {
     navigate("/add")
