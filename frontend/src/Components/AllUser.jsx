@@ -1,19 +1,19 @@
 import { Button, styled, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteTodoAPI, getTodoAPI } from "../Redux/AppReducer/action";
+import DeleteLoader from "./Loader.js/DeleteLoader";
+import Loader2 from "./Loader2";
 import Navbar from "./Navbar";
-
 
 
 
 const AllUser = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  // const data = ["a"]
+   let [count,setCount] = useState(0)
 
   const {isLoading ,isError , todos } = useSelector(store => store.AppReducer)
 
@@ -29,8 +29,11 @@ const AllUser = () => {
   }
 
   useEffect(() => {
-    dispatch(getTodoAPI());
-  }, []);
+    
+      dispatch(getTodoAPI());
+      // setCount(count+1)
+    
+  }, [count]);
 
   return<>
   <Navbar />
@@ -71,14 +74,16 @@ const AllUser = () => {
                   deleteUser(user._id);
                 }}
               >
-                Delete
+                  Delete
               </Button>
             </TableCell>
           </TRow>
         ))}
       </TableBody>
     </TableContainer>
-  )}
+
+)}
+{isLoading && <Loader2 />}
 </>
 
   
